@@ -1,8 +1,6 @@
 /**
  * 1. Declare two functions: calculateGolfAverages and calculateTotalAverages
  */
-
-
 /**
  * 2. Implement calculateGolfAverages
  * 
@@ -14,7 +12,20 @@
  * An example of the expected output
  * "The average score for round 4 is 1.33"
 */
+function calculateRoundAverages(golfScores){
+  for (let i = 0; i < golfScores.length; i++) {
+    const scoresForOneRound = golfScores[i];
+    let sumOfScoresFourRound = 0;
 
+    for (let j = 0; j < scoresForOneRound.length; j++) {
+      sumOfScoresFourRound = sumOfScoresFourRound + scoresForOneRound[j];
+    }
+
+    const average = sumOfScoresFourRound / scoresForOneRound.length;
+    console.log(`The average score for round ${i+1} is ${average.toFixed(2)}`);
+  }
+    
+ }
 
 /**
  * 3. Implement calculateTotalAverages
@@ -28,6 +39,25 @@
  * "The average of averages is 1.39"
  */
 
+ function calculateTotalAverages (golfScores){
+   let sumOfRoundAverages = 0;
+
+   for (let i = 0; i < golfScores.length; i++) {
+     const scoresForOneRound = golfScores[i];
+     let sumOfScoresFourRound = 0;
+
+     for (let j = 0; j < scoresForOneRound.length; j++) {
+      sumOfScoresFourRound = sumOfScoresFourRound + scoresForOneRound[j];
+    }
+
+    const average = sumOfScoresFourRound / scoresForOneRound.length;
+    sumOfRoundAverages = sumOfRoundAverages + average;
+   }
+
+   const averageOfAverages = sumOfRoundAverages / golfScores.length;
+   console.log(`The average of averages is ${averageOfAverages.toFixed(2)}`);
+ }
+ 
 
 
 ///! ----- PLEASE DO NOT EDIT BELOW THIS ---- !///
@@ -42,4 +72,4 @@ const golfScores = [
   [0,1,1,0,2,1,-1,1,4,2,1,1,0,2,-1,1,0,0],
 ];
 calculateRoundAverages(golfScores);
-calculateTotalAverages(golfScores);
+calculateTotalAverages(golfScores)
